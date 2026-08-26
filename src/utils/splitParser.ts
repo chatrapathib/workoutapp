@@ -361,3 +361,34 @@ export function calculateSplitMuscleVolume(split: WorkoutSplit): Record<string, 
 
   return result;
 }
+
+/**
+ * Calculates completed volume per muscle group from workout logs
+ */
+export function calculateWeeklyVolumeFromLogs(
+  logs: { exercises: { sets: { completed: boolean }[]; primaryMuscle: string; secondaryMuscles?: string[] }[] }[]
+): Record<string, { primary: number; secondary: number; total: number }> {
+  const map: Record<string, { primary: number; secondary: number; total: number }> = {};
+
+  for (const log of logs) {
+    for (const ex of log.exercises || []) {
+      const completedCount = (ex.sets || []).filter((s) => s.completed).length;
+      if (completedCount <= 0) continue;
+
+      const p = ex.primaryMuscle || 'Other';
+      if (!map[p]) map[p] = { primary: 0, secondary: 0, total: 0 };
+      map[p].primary += completedCount;
+      map[p].total += completedCount;
+
+      if (ex.secondaryMuscles) {
+        for (const sec of ex.secondaryMuscles) {
+          if (!map[sec]) map[sec] = { primary: 0, secondary: 0, total: 0 };
+          map[sec].secondary += completedCount;
+          map[sec].total += completedCount * 0.5;
+        }
+      }
+    }
+  }
+
+  return map;
+}

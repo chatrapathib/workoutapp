@@ -1,5 +1,20 @@
 import { ExerciseItem, MuscleCategory } from '../types';
 
+export const MUSCLE_CATEGORIES: MuscleCategory[] = [
+  'Chest',
+  'Back',
+  'Shoulders',
+  'Arms - Biceps',
+  'Arms - Triceps',
+  'Forearms',
+  'Legs - Quads',
+  'Legs - Hamstrings/Glutes',
+  'Legs - Calves',
+  'Core / Abs',
+  'Full Body / Compound',
+  'Cardio',
+];
+
 export const DEFAULT_EXERCISES: ExerciseItem[] = [
   // CHEST
   { id: 'bb-bench-press', name: 'Barbell Bench Press', category: 'Chest', primaryMuscle: 'Chest', secondaryMuscles: ['Triceps', 'Shoulders'] },

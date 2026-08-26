@@ -194,11 +194,14 @@ export default function App() {
   const weekSetsCount = weekLogs.reduce((acc, l) => acc + l.totalCompletedSets, 0);
 
   return (
-    <div className="min-h-screen text-[#211D1B] flex flex-col font-sans selection:bg-[#781D2E]/20 selection:text-[#781D2E] pb-20 md:pb-0">
+    <div className="min-h-screen bg-[#0A0A0C] text-[#F4EFE6] flex flex-col font-sans selection:bg-[#E02438] selection:text-[#FFFFFF] pb-20 md:pb-0">
+      {/* Film Grain Texture Overlay */}
+      <div className="grain-overlay" />
+
       {/* Toast Notification */}
       {notification && (
-        <div className="fixed bottom-20 md:bottom-5 right-5 z-50 bg-[#FAF8F5] border border-[#781D2E]/40 text-[#211D1B] px-4 py-2.5 rounded-xl shadow-lg flex items-center gap-2 text-xs font-mono-num animate-in slide-in-from-bottom-2 duration-200">
-          <span className="w-2 h-2 rounded-full bg-[#781D2E]" />
+        <div className="fixed bottom-20 md:bottom-5 right-5 z-50 bg-[#16161C] border border-[#E02438]/50 text-[#F4EFE6] px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 text-xs font-mono-num animate-in slide-in-from-bottom-2 duration-200">
+          <span className="w-2 h-2 rounded-full bg-[#E02438]" />
           <span>{notification.message}</span>
         </div>
       )}
@@ -220,8 +223,8 @@ export default function App() {
       {/* Main App Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-4 sm:py-6">
         {loading ? (
-          <div className="min-h-[360px] flex flex-col items-center justify-center gap-2.5 text-[#6B635B]">
-            <Loader2 className="w-7 h-7 text-[#781D2E] animate-spin" />
+          <div className="min-h-[360px] flex flex-col items-center justify-center gap-2.5 text-[#858076]">
+            <Loader2 className="w-7 h-7 text-[#E02438] animate-spin" />
             <p className="text-xs font-mono-num uppercase tracking-wider">Loading Routine...</p>
           </div>
         ) : (
@@ -279,11 +282,17 @@ export default function App() {
         )}
       </main>
 
-      {/* Minimalist Footer */}
-      <footer className="border-t border-[#E3DCD1] py-4 text-center text-[#8C8278] text-[11px] font-mono-num hidden md:block">
-        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between">
-          <span>Hypertrophy Split & Volume System</span>
-          <span>Minimalist Edition • Zero Distractions</span>
+      {/* Swiss Poster Bottom Metadata Bar */}
+      <footer className="border-t border-[#1C1C22] py-3 text-[#6B665E] text-[10px] font-mono-num hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <span className="font-bold text-[#858076]">STEP Nº010</span>
+            <span>HYPERTROPHY SPECIFICATION</span>
+          </div>
+          <div className="flex items-center gap-6">
+            <span>09°01'42"N • 9°NORTH LATITUDE</span>
+            <span className="text-[#E02438] font-bold">38°44'24"E • VOLUME ENGINE</span>
+          </div>
         </div>
       </footer>
     </div>
