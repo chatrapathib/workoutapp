@@ -1,0 +1,6 @@
+{
+  "name": "Workout Split & Muscle Volume Tracker",
+  "description": "Track workout splits, log sets, and analyze volume by muscle group with built-in exercise database and split parser.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
